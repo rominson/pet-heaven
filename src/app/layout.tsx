@@ -3,7 +3,6 @@ import { Noto_Serif_SC } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/Header"
 import AmbientBackground from "@/components/AmbientBackground"
-import MigrationHandler from "@/components/MigrationHandler"
 
 const notoSerif = Noto_Serif_SC({
   subsets: ["latin"],
@@ -24,24 +23,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN" className={`${notoSerif.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-screen flex flex-col">
         <AmbientBackground />
-        <div className="relative z-10 flex flex-col min-h-full">
+        <div className="relative z-10 flex flex-col flex-1">
           <Header />
-          <MigrationHandler />
           <main className="flex-1">{children}</main>
-
-          <footer className="border-t border-neutral-200 bg-neutral-50">
-            <div className="mx-auto max-w-5xl px-4 py-10 text-center">
-              <p className="text-base font-semibold text-neutral-700 mb-1 font-heading">
-                宠物天堂
-              </p>
-              <p className="text-sm text-neutral-400">
-                爱，从未离开 —— 愿每一个离开的小天使都能在这里找到永恒的温暖
-              </p>
-            </div>
-          </footer>
         </div>
+
+        <footer className="border-t border-neutral-200 bg-neutral-50 mt-auto">
+          <div className="mx-auto max-w-5xl px-4 py-10 text-center">
+            <p className="text-base font-semibold text-neutral-700 mb-1 font-heading">
+              宠物天堂
+            </p>
+            <p className="text-sm text-neutral-400">
+              爱，从未离开 —— 愿每一个离开的小天使都能在这里找到永恒的温暖
+            </p>
+          </div>
+        </footer>
       </body>
     </html>
   )

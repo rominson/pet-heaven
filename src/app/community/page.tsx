@@ -67,10 +67,10 @@ export default function CommunityPage() {
   const [memoriesLoaded, setMemoriesLoaded] = useState(false)
 
   useEffect(() => {
-    loadMemories().then((localPublic) => {
-      const publicMemories = localPublic.filter((m: Memory) => m.isPublic)
-      setAllMemories([...communityMemories, ...publicMemories])
-    }).finally(() => setMemoriesLoaded(true))
+    const allMem = loadMemories()
+    const publicMemories = allMem.filter((m: Memory) => m.isPublic)
+    setAllMemories([...communityMemories, ...publicMemories])
+    setMemoriesLoaded(true)
   }, [])
 
   // 分页：每页 50 条
